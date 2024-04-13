@@ -1,5 +1,5 @@
 # coding: utf-8
-from sqlalchemy import Boolean, Column, Date, DateTime, Float, ForeignKey, String, Text, text
+from sqlalchemy import Boolean, Column, Date, DateTime, Float, ForeignKey, String, Text, text, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
@@ -97,6 +97,8 @@ class Cashback(Model):
     recurrence_id = Column(ForeignKey('recurrences.id'))
     comments = Column(Text)
     special_requirements = Column(Text)
+    address = Column(Text)
+    city = Column(String)
 
     bank = relationship('Bank')
     card_type = relationship('CardType')
