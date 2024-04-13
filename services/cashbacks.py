@@ -12,7 +12,7 @@ from schemas import (
 )
 
 class CashbackService(ServiceBase[Cashback, CashbackCreate, CashbackUpdate]):
-    def get(self, db: Session):
+    def get_all(self, db: Session):
         return db.query(self.model).all()
     
     def get_with_filters(self, db: Session, payment, card_type_id, bank_id, is_qr, reward, reward_type, min_payment, max_reward, category_id, date_to, city, company_name):

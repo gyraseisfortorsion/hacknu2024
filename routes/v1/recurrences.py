@@ -9,7 +9,7 @@ router = APIRouter(prefix = '/categories', tags=["HackNU2024", "Categories"])
 
 @router.get("")
 def get_all(db: Session = Depends(get_db)):
-    return recurrences_service.get(db)
+    return recurrences_service.get_all(db)
 
 @router.get("/types")
 def get_types(db: Session = Depends(get_db)):

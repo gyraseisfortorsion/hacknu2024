@@ -9,7 +9,7 @@ router = APIRouter(prefix = '/banks', tags=["HackNU2024", "Banks"])
 
 @router.get("")
 def get_banks(db: Session = Depends(get_db)):
-    return banks_service.get(db)
+    return banks_service.get_all(db)
 
 @router.get("/{bank_id}")
 def get_bank(bank_id: str, db: Session = Depends(get_db)):

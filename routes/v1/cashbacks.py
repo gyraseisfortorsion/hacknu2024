@@ -9,7 +9,7 @@ router = APIRouter(prefix = '/cashbacks', tags=["HackNU2024", "Cashbacks"])
 
 @router.get("")
 def get_cashbacks(db: Session = Depends(get_db)):
-    return cashbacks_service.get(db)
+    return cashbacks_service.get_all(db)
 
 @router.get("/{cashback_id}")
 def get_cashback(cashback_id: str, db: Session = Depends(get_db)):

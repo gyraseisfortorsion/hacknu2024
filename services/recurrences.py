@@ -15,7 +15,7 @@ from schemas import (
 )
 
 class RecurrenceService(ServiceBase[Recurrence, RecurrenceCreate, RecurrenceUpdate]):
-    def get(self, db: Session):
+    def get_all(self, db: Session):
         return db.query(self.model).all()
     
     def get_types(self, db: Session):

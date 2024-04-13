@@ -9,7 +9,7 @@ router = APIRouter(prefix = '/card_types', tags=["HackNU2024", "CardTypes"])
 
 @router.get("")
 def get_card_type(db: Session = Depends(get_db)):
-    return card_type_service.get(db)
+    return card_type_service.get_all(db)
 
 @router.get("/{card_type_id}")
 def get_card_type(card_type_id: str, db: Session = Depends(get_db)):

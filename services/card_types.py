@@ -12,7 +12,7 @@ from schemas import (
 )
 
 class CardTypeService(ServiceBase[CardType, CardTypeCreate, CardTypeUpdate]):
-    def get(self, db: Session):
+    def get_all(self, db: Session):
         return db.query(self.model).all()
     
     # def create(self, db: Session, obj_in: BankCreate):
