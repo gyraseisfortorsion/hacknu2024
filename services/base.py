@@ -45,7 +45,7 @@ class ServiceBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db_obj = model(**obj_in_data)  # type: ignore
         db.add(db_obj)
         db.flush()
-        
+        db.commit()
         return db_obj
 
     def update(
