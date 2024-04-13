@@ -90,7 +90,7 @@ class Cashback(Model):
     reward_type_id = Column(ForeignKey('reward_types.id'), nullable=False)
     min_payment = Column(Float(53))
     max_reward = Column(String)
-    category_id = Column(ForeignKey('cashback_categories.id'), nullable=False)
+    category_id = Column(ForeignKey('cashback_categories.id'), nullable=True)
     date_to = Column(Date)
     date_from = Column(Date)
     type_id = Column(ForeignKey('cashback_types.id'), nullable=False)
@@ -99,6 +99,7 @@ class Cashback(Model):
     special_requirements = Column(Text)
     address = Column(Text)
     city = Column(String)
+    company = Column(String)
 
     bank = relationship('Bank')
     card_type = relationship('CardType')
