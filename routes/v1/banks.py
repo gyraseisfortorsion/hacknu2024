@@ -5,7 +5,7 @@ from core import get_db
 from schemas import LoginForm, BankCreate
 from services import banks_service
 
-router = APIRouter(prefix = '/banks', tags=["HackNU2024"])
+router = APIRouter(prefix = '/banks', tags=["HackNU2024", "Banks"])
 
 @router.get("")
 def get_banks(db: Session = Depends(get_db)):

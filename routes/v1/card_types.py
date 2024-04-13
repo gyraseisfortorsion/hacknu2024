@@ -5,7 +5,7 @@ from core import get_db
 from schemas import LoginForm, CardTypeCreate
 from services import card_type_service
 
-router = APIRouter(prefix = '/card_types', tags=["HackNU2024"])
+router = APIRouter(prefix = '/card_types', tags=["HackNU2024", "CardTypes"])
 
 @router.get("")
 def get_card_type(db: Session = Depends(get_db)):

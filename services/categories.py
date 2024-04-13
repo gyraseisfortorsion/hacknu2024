@@ -10,7 +10,7 @@ from schemas import (
     CategoryCreate,
     CategoryUpdate
 )
-
+import uuid
 class CategoryService(ServiceBase[CashbackCategory, CategoryCreate, CategoryUpdate]):
     def get_categories(self, db: Session):
         return db.query(CashbackCategory).all()
@@ -24,5 +24,19 @@ class CategoryService(ServiceBase[CashbackCategory, CategoryCreate, CategoryUpda
         db.commit()
         return category
     
+    def parse_categories(self, db: Session):
+        categories = []
+
+        with open('categories.txt', 'r') as file:
+            for line in file:
+                # Remove leading/trailing white space and quotes
+                category = line.strip().strip("'")
+                categories.append(category)
+        
+        # add to db
+        for category in categories:
+            db.add(CashbackCategory(id = uuid.uuid4(), name_ru=category))    
+        db.commit()
+        
 categories_service = CategoryService(CashbackCategory)
     

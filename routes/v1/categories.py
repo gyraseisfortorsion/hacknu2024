@@ -5,7 +5,7 @@ from core import get_db
 from schemas import LoginForm, CategoryCreate
 from services import categories_service
 
-router = APIRouter(prefix = '/categories', tags=["HackNU2024"])
+router = APIRouter(prefix = '/categories', tags=["HackNU2024", "Categories"])
 
 @router.get("")
 def get_categories(db: Session = Depends(get_db)):
@@ -18,3 +18,7 @@ def get_category(category_id: str, db: Session = Depends(get_db)):
 @router.post("")
 def create_category(body: CategoryCreate, db: Session = Depends(get_db)):
     return categories_service.create(db, body)
+
+# @router.post("/parse", tags=["HackNU2024"])
+# def parse_categories(db: Session = Depends(get_db)):
+#     return categories_service.parse_categories(db)

@@ -17,7 +17,7 @@ class CashbackBase(ReadModel):
     reward_type_id: str
     min_payment: Optional[float] = None
     max_reward: Optional[str] = None
-    category_id: Optional[str]
+    category_id: str
     date_to: Optional[date] = None
     date_from: Optional[date] = None
     type_id: str

@@ -1,7 +1,7 @@
 from .base import ServiceBase
 from fastapi import Depends
 from core import get_db
-from models import Cashback
+from models import Cashback, CashbackType, RewardType
 from utils import hash_password
 from sqlalchemy.orm import Session 
 from fastapi.encoders import jsonable_encoder
@@ -64,5 +64,11 @@ class CashbackService(ServiceBase[Cashback, CashbackCreate, CashbackUpdate]):
     #     db.commit()
     #     db.refresh(db_obj)
     #     return db_obj
+
+    def get_cashback_types(self, db: Session):
+        return db.query(CashbackType).all()
+    
+    def get_reward_types(self, db: Session):
+        return db.query(RewardType).all()
 
 cashbacks_service = CashbackService(Cashback)
