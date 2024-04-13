@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from core import Base
 from exceptions import NotFoundException
-
+import uuid
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
@@ -42,7 +42,10 @@ class ServiceBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         if model is None:
             model = self.model
         obj_in_data = jsonable_encoder(obj_in)
+        obj_in_data['id'] = str(uuid.uuid4())
+        print(obj_in_data)
         db_obj = model(**obj_in_data)  # type: ignore
+        
         db.add(db_obj)
         db.flush()
         db.commit()

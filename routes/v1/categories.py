@@ -12,7 +12,7 @@ def get_categories(db: Session = Depends(get_db)):
     return categories_service.get_categories(db)
 
 @router.get("/{category_id}")
-def get_category(category_id: int, db: Session = Depends(get_db)):
+def get_category(category_id: str, db: Session = Depends(get_db)):
     return categories_service.get_category(category_id, db)
 
 @router.post("")
